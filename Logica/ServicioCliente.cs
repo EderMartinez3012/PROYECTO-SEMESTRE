@@ -12,8 +12,7 @@ namespace Logica
         string Delete(T cliente);
         string Edit(string tel, T cliente);
         List<T> GetAll();
-        T GetByCED(int ced);
-        T GetByPhone(string tel);
+        
         bool Exists(T cliente);
     }
 }
