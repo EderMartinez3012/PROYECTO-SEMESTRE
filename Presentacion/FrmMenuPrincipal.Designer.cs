@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class MenuPrincipal
+    partial class FrmMenuPrincipal
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnAgregarCliente
             // 
-            this.button1.Location = new System.Drawing.Point(331, 149);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Agregar cliente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Location = new System.Drawing.Point(331, 149);
+            this.btnAgregarCliente.Name = "btnAgregarCliente";
+            this.btnAgregarCliente.Size = new System.Drawing.Size(115, 23);
+            this.btnAgregarCliente.TabIndex = 0;
+            this.btnAgregarCliente.Text = "Agregar cliente";
+            this.btnAgregarCliente.UseVisualStyleBackColor = true;
+            this.btnAgregarCliente.Click += new System.EventHandler(this.btnAgregarCliente_Click);
             // 
             // btnSalir
             // 
@@ -57,7 +58,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAgregarCliente);
             this.Name = "MenuPrincipal";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -66,7 +67,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Button btnSalir;
     }
 }

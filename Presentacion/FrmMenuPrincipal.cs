@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class MenuPrincipal : Form
+    public partial class FrmMenuPrincipal : Form
     {
-        public MenuPrincipal()
+        public FrmMenuPrincipal()
         {
             InitializeComponent();
         }
@@ -21,6 +21,11 @@ namespace Presentacion
         {
             this.Dispose();
             //this.Close();
+        }
+
+        private void btnAgregarCliente_Click(object sender, EventArgs e)
+        {
+            new FrmClientes().ShowDialog();
         }
     }
 }

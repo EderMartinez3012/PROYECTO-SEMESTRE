@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{F782D358-24F3-40B3-B330-B9CE1A21774E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion", "Presentacion\Presentacion.csproj", "{EC7219E2-CDB9-4C0A-A1A6-0F78D5BCAADD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentacion_GUI", "Presentacion\Presentacion_GUI.csproj", "{EC7219E2-CDB9-4C0A-A1A6-0F78D5BCAADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
