@@ -10,24 +10,21 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class FrmMenuPrincipal : Form
+    public partial class FrmPresentacion : Form
     {
-        public FrmMenuPrincipal()
+        public FrmPresentacion()
         {
             InitializeComponent();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void agregarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmClientes().ShowDialog();
+        }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            //this.Close();
         }
-
-        private void btnAgregarCliente_Click(object sender, EventArgs e)
-        {
-            new FrmPresentacion().ShowDialog();
-        }
-
-        
     }
 }

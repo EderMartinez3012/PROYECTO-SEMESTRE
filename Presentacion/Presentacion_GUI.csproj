@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmPresentacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPresentacion.Designer.cs">
+      <DependentUpon>FrmPresentacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,8 +64,12 @@
     <Compile Include="FrmClientes.Designer.cs">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="LimpiarTodo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmPresentacion.resx">
+      <DependentUpon>FrmPresentacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
     </EmbeddedResource>

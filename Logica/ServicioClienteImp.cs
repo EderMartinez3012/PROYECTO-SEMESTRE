@@ -8,6 +8,7 @@ namespace Logica
 {
     public class Servicio_Cliente_Imp : Servicio_Cliente<Cliente>
     {
+        List<Cliente> clientes;
 
     }
 }
