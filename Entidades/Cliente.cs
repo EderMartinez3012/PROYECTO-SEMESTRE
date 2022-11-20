@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Cliente : Persona
+    public class Cliente  
     {
+        public int Cedula { get; set; }
+
+        public String Nombres { get; set; }
+
+        public String Apellidos { get; set; }
+
+        public String Telefono { get; set; }
+
+        public String Sexo { get; set; }
+
         public String Menu { get; set; }
-        public override string ToString()
-        {
-            return $"{Cedula};{Nombres};{Apellidos};{Telefono};{Sexo};{Menu}";
-        }
     }
 }

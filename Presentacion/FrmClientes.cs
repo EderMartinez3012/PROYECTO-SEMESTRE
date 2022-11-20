@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Entidades;
+using Logica;
 
 namespace Presentacion
 {
     public partial class FrmClientes : Form
     {
+        Cliente cliente = new Cliente();
         public FrmClientes()
         {
             InitializeComponent();
@@ -22,28 +25,9 @@ namespace Presentacion
             this.Dispose();
         }
 
-        //private void btnAgregar_Click(object sender, EventArgs e)
-        //{
-        //    Guardar();
-        //    CargarGrilla();
-        //    CargarLista();
-        //}
-
-        //void Guardar()
-        //{
-        //    Entidades.Cliente cliente = new Entidades.Cliente();
-        //    cliente.Cedula = new Random().Next(999999, 10000000)
-        //    cliente.Nombres = textNombres.Text;
-        //    cliente.Apelllidos = textApellidos.Text;
-        //    cliente.Telefono = textTelefono.Text;
-        //    cliente.Sexo = radioButtonFemenino.Text, radioButtonMasculino.Text;
-        //}
-
-
-
         private void textCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Por favor solo ingresar números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
@@ -73,7 +57,7 @@ namespace Presentacion
 
         private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
             {
                 MessageBox.Show("Por favor solo ingresar números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 e.Handled = true;
@@ -83,12 +67,37 @@ namespace Presentacion
 
         private void btnLimpiarTodo_Click(object sender, EventArgs e)
         {
-            LimpiarTodo limpiarTodo = new LimpiarTodo();
-            limpiarTodo.LimpiarCampos(this, groupBox1);
+            LimpiarTodo();
+            this.comboBox1.Text = "Seleccione...";
+            this.comboBox2.Text = "Seleccione...";
         }
 
-        
+        private void LimpiarTodo()
+        {
+            textCedula.Clear();
+            textNombres.Clear();
+            textApellidos.Clear();
+            textTelefono.Clear();
+        }
 
-        
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            bool Resultado;
+            Cliente cliente = new Cliente();
+            cliente.Cedula = textCedula.Text;
+            cliente.Nombres = textNombres.Text;
+            cliente.Apellidos = textApellidos.Text;
+            cliente.Telefono = textTelefono.Text;
+            cliente.Sexo = comboBox1.Text;
+            cliente.Menu = comboBox2.Text;
+
+            Resultado = cliente.ValidarDatos(cliente);
+            if (Resultado == false)
+            {
+                return;
+            }
+
+            MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
     }
 }

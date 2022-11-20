@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    internal class LimpiarTodo
+    public class LimpiarTodo
     {
         public void LimpiarCampos(Control control, GroupBox groupBox)
         {
