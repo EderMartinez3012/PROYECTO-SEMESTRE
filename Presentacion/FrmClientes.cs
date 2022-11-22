@@ -15,6 +15,7 @@ namespace Presentacion
     public partial class FrmClientes : Form
     {
         Cliente cliente = new Cliente();
+        CLClientes LogicaDeCliente = new CLClientes();
         public FrmClientes()
         {
             InitializeComponent();
@@ -82,22 +83,22 @@ namespace Presentacion
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            bool Resultado;
+            ResponseCliente Resultado;
             Cliente cliente = new Cliente();
-            cliente.Cedula = textCedula.Text;
+            cliente.Cedula = int.Parse(textCedula.Text);
             cliente.Nombres = textNombres.Text;
             cliente.Apellidos = textApellidos.Text;
             cliente.Telefono = textTelefono.Text;
             cliente.Sexo = comboBox1.Text;
             cliente.Menu = comboBox2.Text;
 
-            Resultado = cliente.ValidarDatos(cliente);
-            if (Resultado == false)
+            Resultado = LogicaDeCliente.ValidarDatos(cliente);  
+            if (Resultado.Estado == false)
             {
-                return;
+                MessageBox.Show(Resultado.Mensaje);
             }
 
-            MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,37 +10,36 @@ namespace Logica
 {
     public class CLClientes
     {
-        public bool ValidarDatos(Cliente cliente)
+        public ResponseCliente ValidarDatos(Cliente cliente)
         {
-            bool Resultado = true;
+            //Response Respuesta = new Response();
 
-            if (cliente.Cedula == int.Emp)
+            if (cliente.Cedula.ToString().Length<3)
             {
-                MessageBox.Show("Debe ingresar la cedula");
+                return  new ResponseCliente(false,"Ingresar cedula valida",null);
             }
 
             if (cliente.Nombres == String.Empty)
-            { 
-                Resultado = false;
-                MessageBox.Show("Debe ingresar nombres");
-            }
-
-            if (cliente.Apellidos == String.Empty)
             {
-                MessageBox.Show("Debe ingresar apellidos");
+                return new ResponseCliente(false, "Ingresar nombre valida", null);
             }
 
-            if (cliente.Telefono == String.Empty)
-            {
-                MessageBox.Show("Debe ingresar el telefono");
-            }
+            //if (cliente.Apellidos == String.Empty)
+            //{
+            //    MessageBox.Show("Debe ingresar apellidos");
+            //}
 
-            if (cliente.Menu == String.Empty)
-            {
-                MessageBox.Show("Debe ingresar apellidos");
-            }
+            //if (cliente.Telefono == String.Empty)
+            //{
+            //    MessageBox.Show("Debe ingresar el telefono");
+            //}
 
-            return Resultado;
+            //if (cliente.Menu == String.Empty)
+            //{
+            //    MessageBox.Show("Debe ingresar apellidos");
+            //}
+
+            return new ResponseCliente(true, "Ok", cliente);
         }
 
             
