@@ -26,5 +26,10 @@ namespace Presentacion
         {
             this.Dispose();
         }
+
+        private void consultaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new FrmConsultaClientes().ShowDialog();
+        }
     }
 }

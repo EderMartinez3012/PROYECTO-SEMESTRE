@@ -145,7 +145,6 @@
             this.textCedula.Name = "textCedula";
             this.textCedula.Size = new System.Drawing.Size(155, 20);
             this.textCedula.TabIndex = 2;
-            
             this.textCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textCedula_KeyPress);
             // 
             // label1
@@ -214,6 +213,7 @@
             this.btnLimpiarTodo.TabIndex = 2;
             this.btnLimpiarTodo.Text = "Limpiar todo";
             this.btnLimpiarTodo.UseVisualStyleBackColor = true;
+            this.btnLimpiarTodo.Click += new System.EventHandler(this.btnLimpiarTodo_Click_1);
             // 
             // btnSalir
             // 
@@ -223,6 +223,7 @@
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
             // btnAgregar
             // 

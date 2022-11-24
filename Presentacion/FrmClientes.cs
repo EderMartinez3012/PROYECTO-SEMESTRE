@@ -21,10 +21,10 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
+        //private void btnSalir_Click(object sender, EventArgs e)
+        //{
+        //    this.Dispose();
+        //}
 
         private void textCedula_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -66,20 +66,20 @@ namespace Presentacion
             }
         }
 
-        private void btnLimpiarTodo_Click(object sender, EventArgs e)
-        {
-            LimpiarTodo();
-            this.comboBox1.Text = "Seleccione...";
-            this.comboBox2.Text = "Seleccione...";
-        }
+        //private void btnLimpiarTodo_Click(object sender, EventArgs e)
+        //{
+        //    LimpiarTodo();
+        //    this.comboBox1.Text = "Seleccione...";
+        //    this.comboBox2.Text = "Seleccione...";
+        //}
 
-        private void LimpiarTodo()
-        {
-            textCedula.Clear();
-            textNombres.Clear();
-            textApellidos.Clear();
-            textTelefono.Clear();
-        }
+        //private void LimpiarTodo()
+        //{
+        //    textCedula.Clear();
+        //    textNombres.Clear();
+        //    textApellidos.Clear();
+        //    textTelefono.Clear();
+        //}
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -96,9 +96,30 @@ namespace Presentacion
             if (Resultado.Estado == false)
             {
                 MessageBox.Show(Resultado.Mensaje);
+                MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
 
             //MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void btnLimpiarTodo_Click_1(object sender, EventArgs e)
+        {
+            LimpiarTodo();
+            this.comboBox1.Text = "Seleccione...";
+            this.comboBox2.Text = "Seleccione...";
+        }
+
+        private void LimpiarTodo()
+        {
+            textCedula.Clear();
+            textNombres.Clear();
+            textApellidos.Clear();
+            textTelefono.Clear();
+        }
+
+        private void btnSalir_Click_1(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
