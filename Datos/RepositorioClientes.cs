@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class BaseDeDatos
+    internal class RepositorioClientes
     {
-
     }
 }

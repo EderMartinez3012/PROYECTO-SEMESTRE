@@ -12,11 +12,11 @@ using Logica;
 
 namespace Presentacion
 {
-    public partial class FrmClientes : Form
+    public partial class FrmAgregarClientes : Form
     {
         Cliente cliente = new Cliente();
-        CLClientes LogicaDeCliente = new CLClientes();
-        public FrmClientes()
+        Clientes LogicaDeCliente = new Clientes();
+        public FrmAgregarClientes()
         {
             InitializeComponent();
         }

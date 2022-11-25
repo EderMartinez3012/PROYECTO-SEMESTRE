@@ -19,7 +19,7 @@ namespace Presentacion
 
         private void agregarClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FrmClientes().ShowDialog();
+            new FrmAgregarClientes().ShowDialog();
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
