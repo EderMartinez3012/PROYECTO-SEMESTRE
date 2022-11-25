@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,20 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        
+        private Clientes Clientes = new Clientes();
+
+        private void GetCliente()
+        {
+            var response = Clientes.GetCliente();
+
+            this.Cliente.DataSource = response;
+        }
+
+        private void FrmConsultaClientes_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        }
     }
 }
