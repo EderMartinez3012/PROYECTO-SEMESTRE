@@ -1,70 +1,32 @@
-﻿using System;
-//using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using Datos;
 using Entidades;
+using System.Collections.Generic;
 
 namespace Logica
 {
     public class Clientes
     {
-        //SqlCommand cmd;
-        //public ResponseCliente ValidarDatos(Cliente cliente)
-        //{
-        //    //Response Respuesta = new Response();
+        private RepositorioClientes oCliente = new RepositorioClientes();
 
-        //    if (cliente.Cedula.ToString().Length < 3)
-        //    {
-        //        return new ResponseCliente(false, "Ingresar cedula valida", null);
-        //    }
-
-        //    if (cliente.Nombres == String.Empty)
-        //    {
-        //        return new ResponseCliente(false, "Ingresar nombres validos", null);
-        //    }
-
-        //    if (cliente.Apellidos == String.Empty)
-        //    {
-        //        return new ResponseCliente(false, "Ingresar apellidos validos", null);
-        //    }
-
-        //    if (cliente.Telefono == String.Empty)
-        //    {
-        //        return new ResponseCliente(false, "Ingresar telefono valida", null);
-        //    }
-
-        //    if (cliente.Menu == String.Empty)
-        //    {
-        //        return new ResponseCliente(false, "Ingresar menu valido", null);
-        //    }
-
-        //    return new ResponseCliente(true, "Ok", cliente);
-        //}
-
-        //private Cliente Cliente = new Cliente();
 
         public List<Cliente> GetCliente()
         {
-            return Cliente.GetCliente();
+            return oCliente.GetCliente();
         }
 
-        public int AddCliente(Cliente Entidades)
+        public int AddCliente(Cliente pEntidad)
         {
-            return Cliente.AddCliente(Entidades);
+            return oCliente.AddCliente(pEntidad);
         }
 
-        public int UpdateCliente(Cliente Entidades)
+        public int UpdateCliente(Cliente pEntidad)
         {
-            return Cliente.UpdateCliente(Entidades);
+            return oCliente.UpdateCliente(pEntidad);
         }
 
-        public int DeleteCliente(int Cedula)
+        public int DeleteCliente(int pId)
         {
-            return Cliente.DeleteCliente(Cedula);
+            return oCliente.DeleteCliente(pId);
         }
 
     }

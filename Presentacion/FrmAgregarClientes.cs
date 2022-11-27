@@ -9,117 +9,204 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
 using Logica;
+using Datos;
 
 namespace Presentacion
 {
     public partial class FrmAgregarClientes : Form
     {
-        Cliente cliente = new Cliente();
-        Clientes LogicaDeCliente = new Clientes();
+        private Clientes cliente = new Clientes();
+        private string accion = "nuevo";
+        private int id = 0;
+        private int Id = 0;
+
         public FrmAgregarClientes()
         {
             InitializeComponent();
         }
 
-        //private void btnSalir_Click(object sender, EventArgs e)
-        //{
-        //    this.Dispose();
-        //}
-
-        private void textCedula_KeyPress(object sender, KeyPressEventArgs e)
+        private void FrmAgregarClientes_Load(object sender, EventArgs e)
         {
-            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Por favor solo ingresar números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-            }
+            this.GetCliente();
         }
 
-        private void textNombres_KeyPress(object sender, KeyPressEventArgs e)
+        private void GetCliente()
         {
-            if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Por favor solo ingresar letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-            }
+            var response = cliente.GetCliente();
+
+            this.dgCliente.DataSource = response;
         }
 
-        private void textApellidos_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if ((e.KeyChar >= 32 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Por favor solo ingresar letras", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-            }
-        }
 
-        private void textTelefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
-            {
-                MessageBox.Show("Por favor solo ingresar números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                e.Handled = true;
-                return;
-            }
-        }
+            this.textNombres.Enabled = true;
+            this.textApellidos.Enabled = true;
+            this.textTelefono.Enabled = true;
+            this.comboBox1.Enabled = true;
+            this.comboBox2.Enabled = true;
 
-        //private void btnLimpiarTodo_Click(object sender, EventArgs e)
-        //{
-        //    LimpiarTodo();
-        //    this.comboBox1.Text = "Seleccione...";
-        //    this.comboBox2.Text = "Seleccione...";
-        //}
+            this.btnEditar.Enabled = true;
+            this.btnEliminar.Enabled = true;
+            this.btnGuardar.Enabled = true;
+            this.btnSalir.Enabled = true;
 
-        //private void LimpiarTodo()
-        //{
-        //    textCedula.Clear();
-        //    textNombres.Clear();
-        //    textApellidos.Clear();
-        //    textTelefono.Clear();
-        //}
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            ResponseCliente Resultado;
-            Cliente cliente = new Cliente();
-            cliente.Cedula = int.Parse(textCedula.Text);
-            cliente.Nombres = textNombres.Text;
-            cliente.Apellidos = textApellidos.Text;
-            cliente.Telefono = textTelefono.Text;
-            cliente.Sexo = comboBox1.Text;
-            cliente.Menu = comboBox2.Text;
-
-            Resultado = LogicaDeCliente.ValidarDatos(cliente);  
-            if (Resultado.Estado == false)
-            {
-                MessageBox.Show(Resultado.Mensaje);
-                MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-
-            //MessageBox.Show("Datos guardados correctamente", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        }
-
-        private void btnLimpiarTodo_Click_1(object sender, EventArgs e)
-        {
-            LimpiarTodo();
+            this.textNombres.Text = "";
+            this.textApellidos.Text = "";
+            this.textTelefono.Text = "";
             this.comboBox1.Text = "Seleccione...";
             this.comboBox2.Text = "Seleccione...";
+
+            this.textNombres.Focus();
         }
 
-        private void LimpiarTodo()
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
-            textCedula.Clear();
-            textNombres.Clear();
-            textApellidos.Clear();
-            textTelefono.Clear();
+            if (accion == "nuevo")
+            {
+                Cliente cliente = new Cliente()
+                {
+                    Id = 0,
+                    Nombres = this.textNombres.Text,
+                    Apellidos = this.textApellidos.Text,
+                    Telefono = this.textTelefono.Text,
+                    Sexo = this.comboBox1.Text,
+                    Menu = this.comboBox2.Text,
+                };
+
+                if (cliente != null)
+                {
+                    var response = oCliente.AddCliente(cliente);
+
+                    if (response > 0)
+                    {
+                        MessageBox.Show("Se guardo correctamente.", ",Mensaje del sistemas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al guardar.", ",Mensaje del sistemas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                Cliente cliente = new Cliente()
+                {
+                    Id = id,
+                    Nombres = this.textNombres.Text,
+                    Apellidos = this.textApellidos.Text,
+                    Telefono = this.textTelefono.Text,
+                    Sexo = this.comboBox1.Text,
+                    Menu = this.comboBox2.Text,
+                };
+
+                if (cliente != null)
+                {
+                    var response = oCliente.UpdateCliente(cliente);
+
+                    if (response > 0)
+                    {
+                        MessageBox.Show("Se actualizo correctamente.", ",Mensaje del sistemas. ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al guardar.", ",Mensaje del sistemas. ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            this.textNombres.Text = "";
+            this.textApellidos.Text = "";
+            this.textTelefono.Text = "";
+            this.comboBox1.Text = "Seleccione...";
+            this.comboBox2.Text = "Seleccione...";
+            id = 0;
+
+            this.textNombres.Enabled = false;
+            this.textApellidos.Enabled = false;
+            this.textTelefono.Enabled = false;
+            this.comboBox1.Enabled = false;
+            this.comboBox2.Enabled = false;
+
+            this.btnGuardar.Enabled = false;
+            this.btnSalir.Enabled = false;
+            this.btnNuevo.Enabled = false;
+
+            this.GetCliente();
         }
 
-        private void btnSalir_Click_1(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            accion = "editar";
+
+            if (id > 0)
+            {
+                this.btnEditar.Enabled = false;
+                this.btnEliminar.Enabled = false;
+                this.btnGuardar.Enabled = false;
+                this.btnNuevo.Enabled = false;
+                this.btnSalir.Enabled = true;
+
+                this.textNombres.Enabled = true;
+                this.textApellidos.Enabled = true;
+                this.textTelefono.Enabled = true;
+                this.comboBox1.Enabled = true;
+                this.comboBox2.Enabled = true;
+
+            }
+        }
+
+        private void dgCliente_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            accion = "editar";
+
+            DataGridViewRow row = this.dgCliente.Rows[e.RowIndex];
+
+            id = Convert.ToInt32(row.Cells["Id"].Value);
+            this.textNombres.Text = row.Cells["Nombres"].Value.ToString();
+            this.textApellidos.Text = row.Cells["Apellidos"].Value.ToString();
+            this.textTelefono.Text = row.Cells["Telefono"].Value.ToString();
+            this.comboBox1.Text = row.Cells["Sexo"].Value.ToString();
+            this.comboBox2.Text = row.Cells["Menu"].Value.ToString();
+
+            this.btnEditar.Enabled = true;
+            this.btnEliminar.Enabled = true;
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (id > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Desea eliminar el registro?", "Mensaje del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    var response = oCliente.DeleteCliente(id);
+
+                    if (response > 0)
+                    {
+                        MessageBox.Show("Se elimino correctamente.", ",Mensaje del sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.btnEliminar.Enabled = false;
+                        this.btnEditar.Enabled = false;
+
+                        this.textNombres.Text = "";
+                        this.textApellidos.Text = "";
+                        this.textTelefono.Text = "";
+                        this.comboBox1.Text = "Seleccione...";
+                        this.comboBox2.Text = "Seleccione...";
+                        id = 0;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al eliminar.", ",Mensaje del sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                this.GetCliente();
+            }
         }
     }
 }
+  

@@ -24,7 +24,7 @@ namespace Presentacion
         {
             var response = Clientes.GetCliente();
 
-            this.Cliente.DataSource = response;
+            this.Clientes.DataSource = response;
         }
 
         private void FrmConsultaClientes_Load(object sender, EventArgs e)
@@ -32,6 +32,6 @@ namespace Presentacion
 
         }
 
-        }
     }
 }
+
