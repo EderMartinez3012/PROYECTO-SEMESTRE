@@ -8,6 +8,10 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="Datos.RepositorioClientes">
+    <Position X="4" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
   <Interface Name="Logica.Servicio_Cliente&lt;T&gt;">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
