@@ -37,9 +37,8 @@ namespace Presentacion
             this.dgCliente.DataSource = response;
         }
 
-        private void btnNuevo_Click(object sender, EventArgs e)
+        private void btnNuevo_Click_1(object sender, EventArgs e)
         {
-
             this.textNombres.Enabled = true;
             this.textApellidos.Enabled = true;
             this.textTelefono.Enabled = true;
@@ -207,6 +206,8 @@ namespace Presentacion
                 this.GetCliente();
             }
         }
+
+        
     }
 }
   
